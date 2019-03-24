@@ -5,6 +5,13 @@ package gna;
  * 
  */
 public class SelectionSort extends SortingAlgorithm {
+	
+	/**
+	 * Constructor.
+	 */
+	public SelectionSort() {
+	}
+	
 	/**
 	 * Sorts the given array using selection sort.
 	 * 
@@ -14,12 +21,17 @@ public class SelectionSort extends SortingAlgorithm {
 		if (array == null) {
 			throw new IllegalArgumentException("argument 'array' must not be null.");
 		}
-		throw new RuntimeException("not implemented"); // TODO
-	}
-
-	/**
-	 * Constructor.
-	 */
-	public SelectionSort() {
+		this.resetNumberOfComparisons();
+		int n = array.length;
+		for (int i = 0; i < n; i++) {
+			int minIndex = i;
+			for (int j = i+1; j < n; j++) {
+				if(this.less(array[j], array[minIndex])) {
+					minIndex = j;
+				}
+			}
+			this.exchange(array, i, minIndex);
+		}
+		return this.getNumberOfComparisons();
 	}
 }
