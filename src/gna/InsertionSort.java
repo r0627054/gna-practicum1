@@ -5,6 +5,13 @@ package gna;
  * 
  */
 public class InsertionSort extends SortingAlgorithm {
+	
+	/**
+	 * Constructor.
+	 */
+	public InsertionSort() {
+	}
+	
 	/**
 	 * Sorts the given array using insertion sort.
 	 * 
@@ -14,19 +21,15 @@ public class InsertionSort extends SortingAlgorithm {
 		if (array == null) {
 			throw new IllegalArgumentException("argument 'array' must not be null.");
 		}
-		throw new RuntimeException("not implemented"); // TODO
+		this.resetNumberOfComparisons();
+		int n = array.length;
+		for (int i = 1; i < n; i++) {
+			for (int j = i;    j > 0 && this.less(array[j],array[j-1])  ; j--) {
+				this.exchange(array, j, j-1);
+			}
+		}
+		return this.getNumberOfComparisons();
 	}
 
-	/**
-	 * Constructor.
-	 */
-	public InsertionSort() {
-		
-		
-		
-		
-		
-		
-		
-	}
+
 }
