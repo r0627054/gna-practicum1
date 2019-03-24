@@ -82,5 +82,5 @@ public abstract class SortingAlgorithm implements libpract.SortingAlgorithm{
 	 * @return The number of comparisons (i.e. calls to compareTo) performed by the algorithm.
 	 */
 	public abstract long sort(Comparable[] array) throws IllegalArgumentException;
-
+	
 }
