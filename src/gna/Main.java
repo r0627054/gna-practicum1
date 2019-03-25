@@ -15,8 +15,8 @@ public class Main {
 		//generateDataCSV(algorithms, 100, 16);
 		
 		SortingAlgorithm[] algorithms = {new InsertionSort(), new QuickSort()};
-		doublingRatioDataToCSV(algorithms, 6, 250);
-		//System.out.println("done");
+		doublingRatioDataToCSV(algorithms, 6, 2500);
+		System.out.println("done");
 	}
 	
 	
