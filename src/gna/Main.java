@@ -11,8 +11,57 @@ public class Main {
 	 * You can replace this.
 	 */
 	public static void main(String[] args) {
-		SortingAlgorithm[] algorithms = {new InsertionSort(), new SelectionSort(), new QuickSort()};
-		generateDataCSV(algorithms, 100, 15);
+		//SortingAlgorithm[] algorithms = {new InsertionSort(), new SelectionSort(), new QuickSort()};
+		//generateDataCSV(algorithms, 100, 16);
+		
+		SortingAlgorithm[] algorithms = {new InsertionSort(), new QuickSort()};
+		doublingRatioDataToCSV(algorithms, 6, 250);
+		//System.out.println("done");
+	}
+	
+	
+	
+	/**
+	 * Calculates the time the machine needed in milliseconds to sort the array with the given algorithm.
+	 * @param algorithm
+	 *        The algorithm that needs to be used to sort the array.
+	 * @param array
+	 *        The array which will be sorted.
+	 * @return The time in milliseconds to sort the array with the given algorithm.
+	 */
+	private static long timeTrial(SortingAlgorithm algorithm, Comparable[] array) {
+		Stopwatch timer = new Stopwatch();
+		algorithm.sort(array);
+		return timer.elapsedTime();
+	}
+	
+	/**
+	 * Executes a doubling ratio experiment with the given algorithms and saves it to a csv file.
+	 * @param algorithms
+	 *        The algorithms which will execute a doubling ratio experiment.
+	 * @param doublings
+	 *        The amount of time it should double the array size.
+	 * @param startArraySize
+	 *        The start size the first array will have.
+	 */
+	private static void doublingRatioDataToCSV(SortingAlgorithm[] algorithms, int doublings, int startArraySize) {
+		String filename=System.getProperty("user.dir") + File.separator + "doublingRatio.csv";
+		try (FileOutputStream fos = new FileOutputStream(filename)) {
+			for(SortingAlgorithm algorithm: algorithms) {
+				String algorithmLine = algorithm.getClass().getSimpleName() + "\n";
+				fos.write(algorithmLine.getBytes());
+				int currentArraySize = startArraySize;
+				for (int i = 0; i <= doublings; i++) {
+					long time = timeTrial(algorithm, randomDoubleArray(currentArraySize));
+					System.out.println(time);
+					String dataLine = Integer.toString(currentArraySize) + "," + Long.toString(time) +"\n";
+					fos.write(dataLine.getBytes());
+					currentArraySize = currentArraySize*2;
+				}
+			}
+		}catch (Exception e) {
+			throw new IllegalArgumentException("Couldn't save the content");
+		}
 	}
 	
 	
@@ -31,9 +80,6 @@ public class Main {
 	private static void generateDataCSV(SortingAlgorithm[] algorithms, int sizeLimit, int times) {
 		String filename=System.getProperty("user.dir") + File.separator + "dataFile.csv";
 		try (FileOutputStream fos = new FileOutputStream(filename)) {
-			/*fos.write("hello,yes".getBytes());
-			fos.write("\n".getBytes());
-			fos.write("new,line,bla".getBytes());*/
 			for(SortingAlgorithm algorithm: algorithms) {
 				String algorithmLine = algorithm.getClass().getSimpleName() + "\n";
 				fos.write(algorithmLine.getBytes());
