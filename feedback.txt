@@ -1,0 +1,23 @@
+In deze automatisch gegenereerde mail geven we tips om het eerste
+practicum (sorteeralgoritmen) van het vak Gegevensstructuren en
+Algoritmen beter te doen. Dit is dus geen verantwoording van je score,
+het zijn enkel de belangrijkste opmerkingen. Als algemene indicatie
+gebruiken we een kleurcodering (groen, oranje, rood), waarbij groener
+beter is. De kleurcode voor jouw practicum is: groen. De tips om je
+practicum te verbeteren zijn:
+
+> Vraag 1:  goed gedaan. Mooie connectie experimenten en theorie. Goed dat
+> je je experimenten meerdere keren gerunt hebt. Merk wel op dat zoveel
+> punten je plots soms wat minder leesbaar kunnen maken (bijvoorbeeld de
+> plot voor kleine N). Je zou dit kunnen oplossen door bijvoorbeeld het
+> gemiddelde te nemen. Vraag 2: je berekent de juiste theoretische double
+> ratio's. Maar je voorspellingen zijn verkeerd. Bijvoorbeeld, bij
+> insertion sort moet je om de tijd te bekomen van een invoer die 8 keer
+> groter is, de tijd niet maal 4^8 doen maar maal 8^2.
+
+We onderwierpen alle practica ook aan een JUnit testsuite om de
+effectiviteit van de ingezonden code na te gaan. De automatisch
+gegenereerde output van onze JUnit testen volgt hieronder. Merk op dat
+dit niet de output is van je eigen ingezonden testen.
+
+> OK.
